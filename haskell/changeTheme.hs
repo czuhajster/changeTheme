@@ -2,6 +2,7 @@ module Main where
     import AlacrittyConfig (changeLine)
     import System.IO
     import System.Directory
+    import Data.Yaml
     
     alacrittyConfigPath :: String
     alacrittyConfigPath = "alacritty_config.yml"
