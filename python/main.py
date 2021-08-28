@@ -9,7 +9,9 @@ def main():
     args = parser.parse_args()
     path = args.path
     contents = changeTheme.getYamlContents(path)
-    newContents = changeTheme.changeTheme("dark", contents)
+    toTheme = changeTheme.decideTheme()
+    print(toTheme)
+    newContents = changeTheme.changeTheme(toTheme, contents)
     changeTheme.putYamlContents(newContents, path)
 
 if __name__ == "__main__":

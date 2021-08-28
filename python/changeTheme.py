@@ -1,4 +1,5 @@
 import yaml
+import datetime
 
 def getYamlContents(path: str):
     with open(path, 'r') as f:
@@ -18,6 +19,16 @@ def changeTheme(toTheme, contents):
     if contents['colors']['primary']['background'] != newBgColor:
             contents['colors']['primary']['background'] = newBgColor
     return contents
+
+def decideTheme():
+    now = datetime.datetime.today()
+    time = now.time()
+    eighteen = datetime.time(18)
+    if time < eighteen:
+        toTheme = "light"
+    else:
+        toTheme = "dark"
+    return toTheme
 
 def putYamlContents(contents, path):
     with open(path, 'w') as f:
