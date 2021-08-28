@@ -1,29 +1,24 @@
-import datetime
+import yaml
 
+def getYamlContents(path: str):
+    with open(path, 'r') as f:
+        try:
+            contents = yaml.safe_load(f)
+            return contents
+        except yaml.YAMLError as e:
+            print(e)
 
-with open('/Users/arek/.config/alacritty/alacritty.yml', 'r') as f:
-    nextLine = ''
-    while nextLine != 'normal':
-        nextLine = f.readline().strip()
-    while nextLine[0:5] != 'black':
-        nextLine = f.readline().strip()
-    black = nextLine[7:].strip()[1:8]
+def changeTheme(toTheme, contents):
 
-with open('/Users/arek/.config/alacritty/alacritty.yml', 'r') as f:
-    nextLine = ''
-    while nextLine != 'normal':
-        nextLine = f.readline().strip()
-    while nextLine[0:5] != 'white':
-        nextLine = f.readline().strip()
-    white = nextLine[7:].strip()[1:8]
+    if toTheme == "dark":
+        newBgColor = contents['colors']['normal']['black']
+    elif toTheme == "light":
+        newBgColor = contents['colors']['normal']['white']
 
-with open('/Users/arek/.config/alacritty/alacritty.yml', 'r') as f:
-    nextLine = ''
-    while nextLine[0:10] != 'background':
-        nextLine = f.readline().strip()
-    nextLine = nextLine[11:].strip()[1:8]
-    if currentTime >= time:
-        if nextLine != black:
-    else:
-        if nextLine != white:
+    if contents['colors']['primary']['background'] != newBgColor:
+            contents['colors']['primary']['background'] = newBgColor
+    return contents
 
+def putYamlContents(contents, path):
+    with open(path, 'w') as f:
+        yaml.dump(contents, f)
