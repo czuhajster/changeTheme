@@ -12,7 +12,6 @@ def main():
     path = args.path
     contents = changeTheme.getYamlContents(path)
     toTheme = changeTheme.decideTheme()
-    print(toTheme)
     newContents = changeTheme.changeTheme(toTheme, contents)
     changeTheme.putYamlContents(newContents, path)
 
