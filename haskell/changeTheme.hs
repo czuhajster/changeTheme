@@ -27,4 +27,4 @@ module Main where
               renameFile tempname alacrittyConfigPath
 
     processData :: String -> String
-    processData contents = unlines (changeLine (lines contents) "# normal:" "siusiak")
+    processData contents = unlines (changeLine (lines contents) "# normal:" "foo")
