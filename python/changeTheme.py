@@ -24,7 +24,8 @@ def decideTheme():
     now = datetime.datetime.today()
     time = now.time()
     eighteen = datetime.time(18)
-    if time < eighteen:
+    eight = datetime.time(8)
+    if eight < time and time < eighteen:
         toTheme = "light"
     else:
         toTheme = "dark"
